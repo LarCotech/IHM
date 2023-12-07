@@ -1,0 +1,44 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E302" />
+          <option value="E722" />
+          <option value="E712" />
+          <option value="E701" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N803" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="django.conf.urls.patterns" />
+          <option value="tkinter.*" />
+          <option value="cv2.VideoCapture" />
+          <option value="cv2.cvtColor" />
+          <option value="cv2.COLOR_BGR2RGB" />
+          <option value="cv2.flip" />
+          <option value="cv2.resize" />
+          <option value="cv2.COLOR_BGR2RGBA" />
+          <option value="cv2.imshow" />
+          <option value="cv2.waitKey" />
+          <option value="cv2.CAP_PROP_FRAME_WIDTH" />
+          <option value="cv2.CAP_PROP_FRAME_HEIGHT" />
+          <option value="cv2.imwrite" />
+          <option value="cv2.COLOR_RGB2BGR" />
+          <option value="cv2.COLOR_BGR2GRAY" />
+          <option value="cv2.destroyAllWindows" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
