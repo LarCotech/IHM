@@ -55,9 +55,8 @@ def clic_sur_ligne(event):
         values = table.item(selection)['values']
         print("Clic sur la ligne :", values)
         # code pour la ligne selectionnée
-        rootWindow = Application()
-
-
+        rootWindow.destroy()
+        app = Application()
 
 # treeview for all repas
 table = tk.ttk.Treeview(body, columns=['repas', 'hote', 'location', 'type'])

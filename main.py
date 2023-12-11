@@ -8,7 +8,7 @@ class Application(tk.Tk):
         super().__init__()
 
         self.title("MyDinnerParty")
-        self.geometry("380x600")
+        self.geometry("300x500")
 
         # Initialisation header app
         self.header()
@@ -22,7 +22,7 @@ class Application(tk.Tk):
         self.mainloop()
 
     def header(self):
-        self.frame1 = tk.Frame(self, width=380, height=50, bg="#D9D9D9")
+        self.frame1 = tk.Frame(self, width=300, height=50, bg="#D9D9D9")
         self.frame1.pack_propagate(False)
         self.frame1.pack()
 
@@ -36,12 +36,12 @@ class Application(tk.Tk):
         self.btnF2.pack(side='right', padx=10)
 
     def footer(self):
-        self.frameFooter = tk.Frame(self, width=380, height=50, bg="#D9D9D9")
+        self.frameFooter = tk.Frame(self, width=300, height=50, bg="#D9D9D9")
         self.frameFooter.pack_propagate(False)
         self.frameFooter.pack(side='bottom')
 
     def core1_init(self):
-        self.frameCore1 = tk.Frame(self, width=380, height=175, bg='#EAECEE')
+        self.frameCore1 = tk.Frame(self, width=300, height=175, bg='#EAECEE')
         self.frameCore1.pack_propagate(False)
         self.frameCore1.pack()
 
@@ -68,15 +68,15 @@ class Application(tk.Tk):
         self.update.pack(anchor='se', padx=(0, 15), pady=(0, 5))
 
     def coreMessage_init(self):
-        self.frameCore2 = tk.Frame(self, width=350, height=275)
+        self.frameCore2 = tk.Frame(self, width=300, height=225)
         self.frameCore2.pack_propagate(False)
         self.frameCore2.pack(pady=20)
 
-        self.frameCoreInvite = tk.Frame(self.frameCore2, width=100, height=275, bg='#2C3E50')
+        self.frameCoreInvite = tk.Frame(self.frameCore2, width=100, height=225, bg='#2C3E50')
         self.frameCoreInvite.pack_propagate(False)
         self.frameCoreInvite.pack(side='left')
 
-        self.frameCoreMessage = tk.Frame(self.frameCore2, width=275, height=275, bg='#EAECEE')
+        self.frameCoreMessage = tk.Frame(self.frameCore2, width=200, height=225, bg='#EAECEE')
         self.frameCoreMessage.pack_propagate(False)
         self.frameCoreMessage.pack(side='top')
 
@@ -103,8 +103,6 @@ class UpdateValue:
         self.app = app
         self.updateValueWindow = tk.Toplevel(app)
 
-        # self.updateValueWindow.geometry('300x300')
-
         self.lieuLabel = tk.Label(self.updateValueWindow, text="Lieu : ")
         self.lieuEntry = tk.Entry(self.updateValueWindow)
 
@@ -128,7 +126,17 @@ class UpdateValue:
         self.cancel.pack(side='right', padx=10, pady=(10, 20))
 
     def submit(self):
-        self.app.placeVar = "test"
+        # Set les nouvelles valeurs
+        if self.lieuEntry.get() != '':
+            self.app.placeVar.set(self.lieuEntry.get())
+
+        if self.dateEntry.get() != '':
+            self.app.dateVar.set(self.dateEntry.get())
+
+        if self.paiementEntry.get() != '':
+            self.app.paiementVar.set(self.paiementEntry.get())
+
+        # Supp top level page
         self.updateValueWindow.destroy()
 
 
