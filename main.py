@@ -8,13 +8,17 @@ class Application(tk.Tk):
         super().__init__()
 
         self.title("MyDinnerParty")
-        self.geometry("380x500")
+        self.geometry("380x600")
 
         # Initialisation header app
         self.header()
         # Initialisation corps 1 de l'application avec les infos du dinner
         self.core1_init()
-
+        # Message Part
+        self.coreMessage_init()
+        # Footer
+        self.footer()
+        # Show APP
         self.mainloop()
 
     def header(self):
@@ -31,6 +35,11 @@ class Application(tk.Tk):
         self.btnF1.pack(side='right', padx=20)
         self.btnF2.pack(side='right', padx=10)
 
+    def footer(self):
+        self.frameFooter = tk.Frame(self, width=380, height=50, bg="#D9D9D9")
+        self.frameFooter.pack_propagate(False)
+        self.frameFooter.pack(side='bottom')
+
     def core1_init(self):
         self.frameCore1 = tk.Frame(self, width=380, height=175, bg='#EAECEE')
         self.frameCore1.pack_propagate(False)
@@ -39,18 +48,51 @@ class Application(tk.Tk):
         self.titleDinner = tk.Label(self.frameCore1, text="Anniversaire de Papy", fg='black', bg='#EAECEE')
         self.titleDinner.pack(pady=(15, 0))
 
-        self.place = tk.Radiobutton(self.frameCore1, value="Tours", text="Tours", state="disabled", bg='#EAECEE')
-        self.date = tk.Radiobutton(self.frameCore1, value="09/12/2023 : 12h30", text="09/12/2023 : 12h30", bg='#EAECEE')
-        self.paiement = tk.Radiobutton(self.frameCore1, value="Chacun paie sa part", text="Chacun paie sa part", bg='#EAECEE')
-        self.confirm = tk.Radiobutton(self.frameCore1, value="Nombre de confirmation : 10", text="Nombre de confirmation : 10", bg='#EAECEE')
+        # String Var
+        self.placeVar = tk.StringVar(self.frameCore1, "Tours")
+        self.dateVar = tk.StringVar(self.frameCore1, "09/12/2023 : 12h30")
+        self.paiementVar = tk.StringVar(self.frameCore1, "Chacun paie sa part")
+        self.confirmVar = tk.StringVar(self.frameCore1, "Nombre de confirmation : 10")
 
-        self.place.pack(anchor='w', padx=(20, 0), pady=(10, 0))
-        self.date.pack(anchor='w', padx=(20, 0))
-        self.paiement.pack(anchor='w', padx=(20, 0))
-        self.confirm.pack(anchor='w', padx=(20, 0))
+        self.placeLabel = tk.Label(self.frameCore1, textvariable=self.placeVar, fg='black', bg='#EAECEE')
+        self.dateLabel = tk.Label(self.frameCore1, textvariable=self.dateVar, fg='black', bg='#EAECEE')
+        self.paiementLabel = tk.Label(self.frameCore1, textvariable=self.paiementVar, fg='black', bg='#EAECEE')
+        self.confirmLabel = tk.Label(self.frameCore1, textvariable=self.confirmVar, fg='black', bg='#EAECEE')
 
-        self.update = tk.Button(self.frameCore1, text="Modifier")
-        self.update.pack(anchor='e')
+        self.placeLabel.pack(anchor='w', padx=(20, 0), pady=(10, 0))
+        self.dateLabel.pack(anchor='w', padx=(20, 0))
+        self.paiementLabel.pack(anchor='w', padx=(20, 0))
+        self.confirmLabel.pack(anchor='w', padx=(20, 0))
+
+        self.update = tk.Button(self.frameCore1, text="Modifier", width=10, height=20)
+        self.update.pack(anchor='se', padx=(0, 15), pady=(0, 5))
+
+    def coreMessage_init(self):
+        self.frameCore2 = tk.Frame(self, width=350, height=275)
+        self.frameCore2.pack_propagate(False)
+        self.frameCore2.pack(pady=20)
+
+        self.frameCoreInvite = tk.Frame(self.frameCore2, width=100, height=275, bg='#2C3E50')
+        self.frameCoreInvite.pack_propagate(False)
+        self.frameCoreInvite.pack(side='left')
+
+        self.frameCoreMessage = tk.Frame(self.frameCore2, width=275, height=275, bg='#EAECEE')
+        self.frameCoreMessage.pack_propagate(False)
+        self.frameCoreMessage.pack(side='top')
+
+        # Invité
+        self.inv1 = tk.Label(self.frameCoreInvite, text="Inv1\nInv2\nInv3", fg='black', bg="#D9D9D9")
+
+        self.inv1.pack(anchor='n', padx=5, pady=5)
+
+        self.btnAdd = tk.Button(self.frameCoreInvite, text="Ajouter", bg="#D9D9D9")
+        self.btnAdd.pack(side='bottom', pady=5)
+
+        # Message
+        self.messagEntry = tk.Entry(self.frameCoreMessage)
+        self.messagEntry.insert(0, "Envoyer un message")
+        self.messagEntry.pack(side='bottom', pady=5)
+
 
 
 # Initialisation Application
