@@ -64,7 +64,7 @@ class Application(tk.Tk):
         self.paiementLabel.pack(anchor='w', padx=(20, 0))
         self.confirmLabel.pack(anchor='w', padx=(20, 0))
 
-        self.update = tk.Button(self.frameCore1, text="Modifier", width=10, height=20)
+        self.update = tk.Button(self.frameCore1, text="Modifier", width=10, height=20, command=self.update_value)
         self.update.pack(anchor='se', padx=(0, 15), pady=(0, 5))
 
     def coreMessage_init(self):
@@ -93,7 +93,45 @@ class Application(tk.Tk):
         self.messagEntry.insert(0, "Envoyer un message")
         self.messagEntry.pack(side='bottom', pady=5)
 
+    def update_value(self):
+        newWindow = UpdateValue(self)
+
+
+class UpdateValue:
+
+    def __init__(self, app):
+        self.app = app
+        self.updateValueWindow = tk.Toplevel(app)
+
+        # self.updateValueWindow.geometry('300x300')
+
+        self.lieuLabel = tk.Label(self.updateValueWindow, text="Lieu : ")
+        self.lieuEntry = tk.Entry(self.updateValueWindow)
+
+        self.dateLabel = tk.Label(self.updateValueWindow, text="Date : ")
+        self.dateEntry = tk.Entry(self.updateValueWindow)
+
+        self.paiementLabel = tk.Label(self.updateValueWindow, text="Comment payer ?")
+        self.paiementEntry = tk.Entry(self.updateValueWindow)
+
+        self.lieuLabel.pack(padx=10, pady=(20, 0))
+        self.lieuEntry.pack(padx=10)
+        self.dateLabel.pack(padx=10)
+        self.dateEntry.pack(padx=10)
+        self.paiementLabel.pack(padx=10)
+        self.paiementEntry.pack(padx=10)
+
+        self.submitBtn = tk.Button(self.updateValueWindow, text="Submit", command=self.submit)
+        self.submitBtn.pack(side='left', padx=10, pady=(10, 20))
+
+        self.cancel = tk.Button(self.updateValueWindow, text="Cancel", command=self.updateValueWindow.destroy)
+        self.cancel.pack(side='right', padx=10, pady=(10, 20))
+
+    def submit(self):
+        self.app.placeVar = "test"
+        self.updateValueWindow.destroy()
 
 
 # Initialisation Application
-app = Application()
+if __name__ == '__main__':
+    app = Application()
