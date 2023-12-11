@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from main import Application
 
 # defining main window
 rootWindow = tk.Tk()
@@ -45,6 +46,19 @@ buttonMyRepas.pack(fill='both', expand=False, padx=(14, 14), pady=(5, 5))
 buttonMyRepas = tk.Button(body, text="Mes invitations", bg="#2C3E50", fg="white")
 buttonMyRepas.pack(fill='both', expand=False, padx=(14, 14), pady=(5, 5))
 
+def clic_sur_ligne(event):
+    # Récupérer l'ID de la ligne sélectionnée
+    selection = table.selection()
+
+    if selection:
+        # Récupérer les valeurs de la ligne sélectionnée
+        values = table.item(selection)['values']
+        print("Clic sur la ligne :", values)
+        # code pour la ligne selectionnée
+        rootWindow = Application()
+
+
+
 # treeview for all repas
 table = tk.ttk.Treeview(body, columns=['repas', 'hote', 'location', 'type'])
 table.heading('repas', text='repas')
@@ -61,6 +75,8 @@ table.insert('', 'end', values=('repas #1', 'moi', 'chez moi', 'Continental'))
 table.insert('', 'end', values=('repas #2', 'Jane Smith', 'Salle à manger', 'Cuisine locale'))
 table.insert('', 'end', values=('repas #3', 'moi', 'restaurant', 'Gastronomique'))
 
+# Associer l'événement de clic sur une ligne à la fonction
+table.bind('<ButtonRelease-1>', clic_sur_ligne)
 
 # button to add repas
 buttonAddRepas = tk.Button(body, text="Add", bg="#2C3E50", fg="white")
